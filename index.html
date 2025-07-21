@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Killer Game Bet - Play. Bet. Get Rewarded.</title>
+    <meta name="description" content="Secure gaming platform where players can bet on skills, compete in favorite games, and get rewarded instantly.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <img src="assets/logo.png" alt="Kill-Zone Game⋅Bet" class="logo-img">
+            </div>
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <!-- Logo -->
+                <div class="nav-logo">
+                   <img src="assets/logo.png" alt="Kill-Zone Game⋅Bet" class="logo-img" onclick="scrollToHome()">
+                   <a href="#home" class="logo-text" onclick="scrollToHome()">Kill-Zone Game⋅Bet</a>
+                </div>
+
+                <!-- Navigation Menu -->
+                <div class="nav-menu" id="nav-menu">
+                    <a href="#home" class="nav-link active" data-section="home">Home</a>
+                    <a href="#about" class="nav-link" data-section="about">About</a>
+                    <a href="#how-it-works" class="nav-link" data-section="how-it-works">How It Works</a>
+                    <a href="#features" class="nav-link" data-section="features">Features</a>
+                </div>
+
+                <!-- User Section -->
+                <div class="nav-user">
+                    <!-- Logged Out State -->
+                    <div class="auth-buttons" id="auth-buttons">
+                        <button class="btn btn-outline" id="login-btn">Login</button>
+                        <button class="btn btn-primary" id="signup-btn">Sign Up</button>
+                    </div>
+
+                    <!-- Logged In State -->
+                    <div class="user-profile hidden" id="user-profile">
+                        <div class="profile-avatar" id="profile-avatar">
+                            <img src="assets/user-proile.png" alt="Profile" class="avatar-img">
+                            <span class="online-indicator"></span>
+                        </div>
+                        <div class="profile-dropdown" id="profile-dropdown">
+                            <div class="dropdown-header">
+                                <div class="user-info">
+                                    <span class="username">GamerPro</span>
+                                    <span class="user-balance">$150.00</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-user"></i>
+                                    <span>Profile</span>
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-wallet"></i>
+                                    <span>My Wallet</span>
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <i class="fas fa-gamepad"></i>
+                                    <span>My Matches</span>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="#" class="dropdown-item" id="logout-btn">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-background">
+                <div class="hero-overlay"></div>
+                <img src="assets/hero.jpg" class="hero-bg-img">
+            </div>
+            
+            <div class="hero-content">
+                <div class="container">
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            <span class="title-line gradient-text">Play Anywhere,</span>
+                            <span class="title-line gradient-text">Get Paid Instantly.</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                           <span class="title-line"> Find players, place your bet, play your favorite games, upload your score, and claim your reward securely.</span>
+                        </p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary btn-large pulse-animation">
+                                <i class="fas fa-rocket"></i>
+                                Get Started
+                            </button>
+                            <a href="#how-it-works">
+                                <button class="btn btn-outline btn-large">
+                                <i class="fas fa-play"></i>
+                                Learn How It Works
+                            </button>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-arrow">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <div class="section-header">
+                            <h2 class="section-title">About Kill-Zone Game⋅Bet</h2>
+                            <p class="section-subtitle">Revolutionizing competitive gaming through secure betting</p>
+                        </div>
+                        
+                        <div class="about-description">
+                            <p class="about-paragraph">
+                               Kill-Zone Game⋅Bet is the ultimate platform where gaming skills meet real rewards. We've created a secure, transparent ecosystem that allows gamers to monetize their passion while competing with players worldwide.
+                            </p>
+                            <p class="about-paragraph">
+                                Founded by passionate gamers who understood the need for a trustworthy platform, Killer Game Bet bridges the gap between casual gaming and competitive esports. Our mission is to provide every gamer with the opportunity to turn their skills into earnings.
+                            </p>
+                            <p class="about-paragraph">
+                                With cutting-edge technology, partnerships with trusted payment providers, and a community-first approach, we're building the future of competitive gaming where everyone wins.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h3 class="highlight-title">Secure & Trusted</h3>
+                                <p class="highlight-description">Bank-level security with transparent blockchain technology</p>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h3 class="highlight-title">Global Community</h3>
+                                <p class="highlight-description">Connect with verified players from around the world</p>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h3 class="highlight-title">Fair Competition</h3>
+                                <p class="highlight-description">Advanced anti-cheat systems and dispute resolution</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works" id="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">How It Works</h2>
+                    <p class="section-subtitle">5 Simple Steps to Start Winning</p>
+                </div>
+
+                <div class="steps-container">
+                    <div class="step" data-step="1">
+                        <div class="step-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3 class="step-title">Meet Players</h3>
+                            <p class="step-description">Create or join matchrooms, invite players, and agree on terms for your upcoming match.</p>
+                        </div>
+                        <div class="step-number">01</div>
+                    </div>
+
+                    <div class="step" data-step="2">
+                        <div class="step-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3 class="step-title">Bet Money Securely</h3>
+                            <p class="step-description">Deposit your bet amount through trusted payment partners like Arifpay, Santimpay, and Chappa.</p>
+                        </div>
+                        <div class="step-number">02</div>
+                    </div>
+
+                    <div class="step" data-step="3">
+                        <div class="step-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3 class="step-title">Play the Game</h3>
+                            <p class="step-description">Choose your favorite game and compete outside our platform. We support any game you love!</p>
+                        </div>
+                        <div class="step-number">03</div>
+                    </div>
+
+                    <div class="step" data-step="4">
+                        <div class="step-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3 class="step-title">Submit Your Score</h3>
+                            <p class="step-description">Upload a screenshot or result proof. Our advanced system verifies winners automatically.</p>
+                        </div>
+                        <div class="step-number">04</div>
+                    </div>
+
+                    <div class="step" data-step="5">
+                        <div class="step-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3 class="step-title">Get Paid Instantly</h3>
+                            <p class="step-description">Rewards are sent to your Kill-Zone Game⋅Bet wallet. Withdraw through our supported financial partners.</p>
+                        </div>
+                        <div class="step-number">05</div>
+                    </div>
+                </div>
+
+                <!-- Progress Line -->
+                <div class="progress-line">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features" id="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Why Choose Kill-Zone Game⋅Bet</h2>
+                    <p class="section-subtitle">Built for gamers, by gamers</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3 class="feature-title">Secure & Transparent Betting</h3>
+                        <p class="feature-description">Advanced encryption and blockchain technology ensure your bets and rewards are completely secure.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="feature-title">Fast Withdrawals</h3>
+                        <p class="feature-description">Lightning-fast payouts via Arifpay, Santimpay, and Chappa. Get your winnings in minutes.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3 class="feature-title">Dispute Resolution System</h3>
+                        <p class="feature-description">Fair and transparent dispute resolution with AI-powered verification and human oversight.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <h3 class="feature-title">Verified Players Community</h3>
+                        <p class="feature-description">Play with confidence in our community of verified, skilled players with reputation systems.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Mobile & Web Interface</h3>
+                        <p class="feature-description">Seamless experience across all devices with our responsive design and mobile-first approach.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-infinity"></i>
+                        </div>
+                        <h3 class="feature-title">Any Game Support</h3>
+                        <p class="feature-description">From FPS to strategy games, mobile to PC - bet on any game you're passionate about.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta">
+            <div class="cta-background">
+              
+                <div class="cta-overlay"></div>
+            </div>
+            
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Stop Talking — Start Winning!</h2>
+                    <p class="cta-subtitle">Join thousands of gamers already earning on Kill-Zone Game⋅Bet</p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary btn-large glow-animation">
+                            <i class="fas fa-crown"></i>
+                            Join Kill-Zone Game⋅Bet Now
+                        </button>
+                        <button class="btn btn-outline btn-large">
+                            <i class="fas fa-info-circle"></i>
+                            Learn More
+                        </button>
+                    </div>
+                    
+                    <!-- Stats Counter -->
+                    <div class="stats-counter">
+                        <div class="stat">
+                            <span class="stat-number" data-target="10000">0</span>
+                            <span class="stat-label">Active Players</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-target="50000">0</span>
+                            <span class="stat-label">Matches Played</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-target="1000000">0</span>
+                            <span class="stat-label">Rewards Paid ($)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Logo and Description -->
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/logo.png" alt="Kill-Zone Game⋅Bet" class="logo-img">
+                        <span class="logo-text">Kill-Zone Game⋅Bet</span>
+                    </div>
+                    <p class="footer-description">
+                        The ultimate gaming platform where skills meet rewards. Bet on your favorite games and get paid instantly.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/" target="_blank" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://web.telegram.org/k/" target="_blank" class="social-link" aria-label="Telegram">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/" target="_blank" class="social-link" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.discord.com/" target="_blank" class="social-link" aria-label="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#" id="terms-link">Terms & Conditions</a></li>
+                        <li><a href="#" id="privacy-link">Privacy Policy</a></li>
+                        <li><a href="#support">Contact Support</a></li>
+                    </ul>
+                </div>
+
+                <!-- Payment Partners -->
+                <div class="footer-section">
+                    <h3 class="footer-title">Payment Partners</h3>
+                    <div class="payment-logos">
+                        <div class="payment-logo">
+                            <span class="payment-text">Arifpay</span>
+                        </div>
+                        <div class="payment-logo">
+                            <span class="payment-text">Santimpay</span>
+                        </div>
+                        <div class="payment-logo">
+                            <span class="payment-text">Chappa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-section">
+                    <h3 class="footer-title">Stay Updated</h3>
+                    <p class="newsletter-text">Get the latest updates on tournaments and rewards</p>
+                    <form class="newsletter-form" id="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-divider"></div>
+                <div class="footer-info">
+                    <p class="copyright">© 2025 Kill-Zone Game⋅Bet. All rights reserved.</p>
+                    <p class="disclaimer">Bet responsibly. 18+ only.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="login-modal-overlay">
+        <div class="modal" id="login-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Welcome Back</h2>
+                <button class="modal-close" id="login-modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="auth-form" id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email or Username</label>
+                        <input type="text" id="login-email" class="form-input" placeholder="Enter your email or username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <div class="password-input-container">
+                            <input type="password" id="login-password" class="form-input" placeholder="Enter your password" required>
+                            <button type="button" class="password-toggle" data-target="login-password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="checkbox">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Login</button>
+                </form>
+                <div class="auth-divider">
+                    <span>or</span>
+                </div>
+                <div class="social-auth">
+                    <button class="btn btn-social btn-google">
+                        <i class="fab fa-google"></i>
+                        Continue with Google
+                    </button>
+                    <button class="btn btn-social btn-discord">
+                        <i class="fab fa-discord"></i>
+                        Continue with Discord
+                    </button>
+                </div>
+                <p class="auth-switch">
+                    Don't have an account? <a href="#" id="switch-to-signup">Sign up</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal-overlay" id="signup-modal-overlay">
+        <div class="modal" id="signup-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Join Killer Game Bet</h2>
+                <button class="modal-close" id="signup-modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="auth-form" id="signup-form">
+                    <div class="form-group">
+                        <label for="signup-username">Username</label>
+                        <input type="text" id="signup-username" class="form-input" placeholder="Choose a username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <div class="password-input-container">
+                            <input type="password" id="signup-password" class="form-input" placeholder="Create a password" required>
+                            <button type="button" class="password-toggle" data-target="signup-password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-confirm-password">Confirm Password</label>
+                        <div class="password-input-container">
+                            <input type="password" id="signup-confirm-password" class="form-input" placeholder="Confirm your password" required>
+                            <button type="button" class="password-toggle" data-target="signup-confirm-password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="checkbox" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="#terms">Terms & Conditions</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                </form>
+                <div class="auth-divider">
+                    <span>or</span>
+                </div>
+                <div class="social-auth">
+                    <button class="btn btn-social btn-google">
+                        <i class="fab fa-google"></i>
+                        Continue with Google
+                    </button>
+                    <button class="btn btn-social btn-discord">
+                        <i class="fab fa-discord"></i>
+                        Continue with Discord
+                    </button>
+                </div>
+                <p class="auth-switch">
+                    Already have an account? <a href="#" id="switch-to-login">Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms & Conditions Modal -->
+    <div class="modal-overlay gallery-modal" id="terms-modal-overlay">
+        <div class="modal gallery-modal-content" id="terms-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Terms & Conditions</h2>
+                <button class="modal-close" id="terms-modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body gallery-modal-body">
+                <div class="terms-content">
+                    <h3>1. Acceptance of Terms</h3>
+                    <p>By accessing and using Kill-Zone Game⋅Bet, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                    
+                    <h3>2. Gaming and Betting Rules</h3>
+                    <p>All users must be 18 years or older to participate in betting activities. Kill-Zone Game⋅Bet promotes responsible gaming and provides tools to help users manage their gaming activities.</p>
+                    
+                    <h3>3. Account Security</h3>
+                    <p>Users are responsible for maintaining the confidentiality of their account information and password. Any activities that occur under your account are your responsibility.</p>
+                    
+                    <h3>4. Fair Play Policy</h3>
+                    <p>Kill-Zone Game⋅Bet maintains a zero-tolerance policy for cheating, fraud, or any form of unfair play. Violations will result in immediate account suspension and forfeiture of funds.</p>
+                    
+                    <h3>5. Payment and Withdrawals</h3>
+                    <p>All transactions are processed through our secure payment partners. Withdrawal requests are processed within 24-48 hours during business days.</p>
+                    
+                    <h3>6. Dispute Resolution</h3>
+                    <p>In case of disputes, Kill-Zone Game⋅Bet provides a fair and transparent resolution process with both automated systems and human oversight.</p>
+                    
+                    <h3>7. Privacy and Data Protection</h3>
+                    <p>We are committed to protecting your privacy and personal information in accordance with our Privacy Policy and applicable data protection laws.</p>
+                    
+                    <h3>8. Limitation of Liability</h3>
+                    <p>Kill-Zone Game⋅Bet shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of the service.</p>
+                    
+                    <h3>9. Changes to Terms</h3>
+                    <p>Kill-Zone Game⋅Bet reserves the right to modify these terms at any time. Users will be notified of significant changes via email or platform notifications.</p>
+                    
+                    <h3>10. Contact Information</h3>
+                    <p>For questions about these terms, please contact our support team through the platform or email support@killzonegamebet.com.</p>
+                </div>
+                
+                <div class="terms-acceptance">
+                    <label class="checkbox-label terms-checkbox">
+                        <input type="checkbox" class="checkbox" id="accept-terms">
+                        <span class="checkmark"></span>
+                        I have read and accept the Terms & Conditions
+                    </label>
+                    <button class="btn btn-primary btn-full" id="accept-terms-btn" disabled>Accept Terms</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div class="modal-overlay gallery-modal" id="privacy-modal-overlay">
+        <div class="modal gallery-modal-content" id="privacy-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Privacy Policy</h2>
+                <button class="modal-close" id="privacy-modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body gallery-modal-body">
+                <div class="privacy-content">
+                    <h3>1. Information We Collect</h3>
+                    <p>We collect information you provide directly to us, such as when you create an account, make a transaction, or contact us for support. This includes your name, email address, payment information, and gaming activity.</p>
+                    
+                    <h3>2. How We Use Your Information</h3>
+                    <p>We use the information we collect to provide, maintain, and improve our services, process transactions, send you technical notices and support messages, and communicate with you about products, services, and promotional offers.</p>
+                    
+                    <h3>3. Information Sharing and Disclosure</h3>
+                    <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy. We may share information with trusted partners who assist us in operating our platform.</p>
+                    
+                    <h3>4. Data Security</h3>
+                    <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. This includes encryption, secure servers, and regular security audits.</p>
+                    
+                    <h3>5. Cookies and Tracking Technologies</h3>
+                    <p>We use cookies and similar tracking technologies to track activity on our platform and hold certain information to improve user experience and analyze usage patterns.</p>
+                    
+                    <h3>6. Your Rights and Choices</h3>
+                    <p>You have the right to access, update, or delete your personal information. You can also opt out of certain communications and control cookie preferences through your browser settings.</p>
+                    
+                    <h3>7. Data Retention</h3>
+                    <p>We retain your personal information for as long as necessary to provide our services, comply with legal obligations, resolve disputes, and enforce our agreements.</p>
+                    
+                    <h3>8. International Data Transfers</h3>
+                    <p>Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place to protect your information during such transfers.</p>
+                    
+                    <h3>9. Children's Privacy</h3>
+                    <p>Our services are not intended for individuals under the age of 18. We do not knowingly collect personal information from children under 18 years of age.</p>
+                    
+                    <h3>10. Changes to This Policy</h3>
+                    <p>We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the "Last Updated" date.</p>
+                    
+                    <p><strong>Last Updated:</strong> January 2025</p>
+                    
+                    <h3>11. Contact Us</h3>
+                    <p>If you have any questions about this Privacy Policy, please contact us at privacy@killzonegamebet.com or through our support system.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
