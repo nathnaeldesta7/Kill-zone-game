@@ -2064,6 +2064,10 @@ section {
     height: 40px;
   }
 
+  .footer-logo-text {
+    font-size: 1rem;
+  }
+
 
   .auth-buttons {
     height: 35px; 
