@@ -3017,7 +3017,7 @@ section {
 
   /* Sidebar adjustments for very small screens */
   .sidebar {
-    height: 40px;
+    height: 60px;
   }
 
   .sidebar-item {
