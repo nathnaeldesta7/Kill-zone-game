@@ -15,7 +15,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="dark-theme">
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
@@ -23,80 +23,149 @@
         </div>
     </div>
 
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-item" data-tooltip="Games">
+            <i class="fas fa-gamepad"></i>
+            <span class="sidebar-label">Games</span>
+        </div>
+        <div class="sidebar-item" data-tooltip="Live">
+            <i class="fas fa-circle"></i>
+            <span class="sidebar-label">Live</span>
+        </div>
+        <div class="sidebar-item" data-tooltip="Promotion">
+            <i class="fas fa-tags"></i>
+            <span class="sidebar-label">Promotion</span>
+        </div>
+        <div class="sidebar-item" data-tooltip="Help/Instructions">
+            <i class="fas fa-question-circle"></i>
+            <span class="sidebar-label">Help</span>
+        </div>
+        <div class="sidebar-item" data-tooltip="Work With Us">
+            <i class="fas fa-handshake"></i>
+            <span class="sidebar-label">Work With Us</span>
+        </div>
+        <div class="sidebar-item" data-tooltip="Chat">
+            <i class="fas fa-comments"></i>
+            <span class="sidebar-label">Chat</span>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="header" id="header">
         <nav class="navbar">
             <div class="nav-container">
-                <!-- Logo -->
-                <div class="nav-logo">
-                   <img src="assets/logo.svg" alt="Kill-Zone Game⋅Bet" class="logo-img" onclick="scrollToHome()">
-                   <a href="#home" class="logo-text" onclick="scrollToHome()">Kill-Zone Game⋅Bet</a>
-                </div>
-
-                <!-- Navigation Menu -->
-                <div class="nav-menu" id="nav-menu">
-                    <a href="#home" class="nav-link active" data-section="home">Home</a>
-                    <a href="#about" class="nav-link" data-section="about">About</a>
-                    <a href="#how-it-works" class="nav-link" data-section="how-it-works">How It Works</a>
-                    <a href="#features" class="nav-link" data-section="features">Features</a>
-                </div>
-
-                <!-- User Section -->
-                <div class="nav-user">
-                    <!-- Logged Out State -->
-                    <div class="auth-buttons" id="auth-buttons">
-                        <button class="btn btn-outline" id="login-btn">Login</button>
-                        <button class="btn btn-primary" id="signup-btn">Sign Up</button>
+                <!-- Left Section: Mobile Menu Toggle + Logo -->
+                <div class="nav-left">
+                    <!-- Mobile Menu Toggle -->
+                    <div class="nav-toggle" id="nav-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
                     </div>
 
-                    <!-- Logged In State -->
-                    <div class="user-profile hidden" id="user-profile">
-                        <div class="profile-avatar" id="profile-avatar">
-                            <img src="assets/user-proile.webp" alt="Profile" class="avatar-img">
-                            <span class="online-indicator"></span>
+                    <!-- Logo -->
+                    <div class="nav-logo">
+                       <img src="assets/logo.svg" alt="Kill-Zone Game⋅Bet" class="logo-img">
+                       <span class="logo-text">Kill Zone Game⋅Bet</span>
+                    </div>
+                </div>
+
+                <!-- Center Section: Search Bar + Navigation Menu -->
+                <div class="nav-center">
+                    <!-- Search Bar -->
+                    <div class="nav-search">
+                        <div class="search-container">
+                            <input type="text" class="search-input" placeholder="Search games, players..." id="search-input">
+                            <button class="search-btn" id="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
                         </div>
-                        <div class="profile-dropdown" id="profile-dropdown">
-                            <div class="dropdown-header">
-                                <div class="user-info">
-                                    <span class="username">GamerPro</span>
-                                    <span class="user-balance">$150.00</span>
+                    </div>
+
+                    <!-- Navigation Menu -->
+                    <div class="nav-menu" id="nav-menu">
+                        <a href="#home" class="nav-link active" data-section="home">Home</a>
+                        <a href="#games" class="nav-link" data-section="games">Games</a>
+                        <a href="#about" class="nav-link" data-section="about">About</a>
+                        <a href="#how-it-works" class="nav-link" data-section="how-it-works">How It Works</a>
+                        <a href="#features" class="nav-link" data-section="features">Features</a>
+                    </div>
+                </div>
+
+                <!-- Right Section: User Section + Theme Toggle -->
+                <div class="nav-right">
+                    <!-- User Section -->
+                    <div class="nav-user">
+                        <!-- Logged Out State -->
+                        <div class="auth-buttons" id="auth-buttons">
+                            <button class="btn btn-outline" id="login-btn">Login</button>
+                            <button class="btn btn-primary" id="signup-btn">Register</button>
+                        </div>
+
+                        <!-- Logged In State -->
+                        <div class="user-profile hidden" id="user-profile">
+                            <div class="profile-avatar" id="profile-avatar">
+                                <img src="assets/user-proile.webp" alt="Profile" class="avatar-img">
+                                <span class="online-indicator"></span>
+                            </div>
+                            <div class="profile-dropdown" id="profile-dropdown">
+                                <div class="dropdown-header">
+                                    <div class="user-info">
+                                        <span class="username">GamerPro</span>
+                                        <span class="user-balance">$0.00</span>
+                                    </div>
+                                </div>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">
+                                        <i class="fas fa-user"></i>
+                                        <span>Profile</span>
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        <i class="fas fa-wallet"></i>
+                                        <span>My Wallet</span>
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        <i class="fas fa-gamepad"></i>
+                                        <span>My Matches</span>
+                                    </a>
+                                    <a href="#" class="dropdown-item" id="deposit-btn">
+                                        <i class="fas fa-plus"></i>
+                                        <span>Deposit</span>
+                                    </a>
+                                    <a href="#" class="dropdown-item" id="withdraw-btn">
+                                        <i class="fas fa-minus"></i>
+                                        <span>Withdraw</span>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="#" class="dropdown-item" id="logout-btn">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <span>Logout</span>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item">
-                                    <i class="fas fa-user"></i>
-                                    <span>Profile</span>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <i class="fas fa-wallet"></i>
-                                    <span>My Wallet</span>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <i class="fas fa-gamepad"></i>
-                                    <span>My Matches</span>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a href="#" class="dropdown-item" id="logout-btn">
-                                    <i class="fas fa-sign-out-alt"></i>
-                                    <span>Logout</span>
-                                </a>
-                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Mobile Menu Toggle -->
-                <div class="nav-toggle" id="nav-toggle">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
+                    <!-- Theme Toggle -->
+                    <div class="theme-toggle" id="theme-toggle">
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="theme-checkbox" class="toggle-checkbox">
+                            <label for="theme-checkbox" class="toggle-label">
+                                <span class="toggle-slider">
+                                    <i class="fas fa-moon toggle-icon dark-icon"></i>
+                                    <i class="fas fa-sun toggle-icon light-icon"></i>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
 
     <!-- Main Content -->
-    <main>
+    <main class="main-content">
         <!-- Hero Section -->
         <section class="hero" id="home">
             <div class="hero-background">
@@ -108,11 +177,11 @@
                 <div class="container">
                     <div class="hero-text">
                         <h1 class="hero-title">
-                            <span class="title-line gradient-text">Play Anywhere,</span>
-                            <span class="title-line gradient-text">Get Paid Instantly.</span>
+                            <span class="title-line gradient-text">Turn Your Skill,</span>
+                            <span class="title-line gradient-text">In To Earnings.</span>
                         </h1>
                         <p class="hero-subtitle">
-                           <span class="title-line"> Find players, place your bet, play your favorite games, upload your score, and claim your reward securely.</span>
+                           <span class="title-line"> Place your bet, play your favorite games, upload your score, and claim your reward securely.</span>
                         </p>
                         <div class="hero-buttons">
                             <button class="btn btn-primary btn-large pulse-animation">
@@ -139,19 +208,198 @@
             </div>
         </section>
 
+        <!-- Games Section -->
+        <section class="games" id="games">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Game Catagories</h2>
+                </div>
+
+                <div class="games-grid">
+                    <div class="game-card" data-game-type="virtual">
+                        <div class="game-card-inner">
+                            <div class="game-icon">
+                                <i class="fas fa-vr-cardboard"></i>
+                            </div>
+                            <div class="game-content">
+                                <h3 class="game-title">Virtual</h3>
+                                <p class="game-description">Immersive VR gaming experiences</p>
+                                <div class="game-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>2.5K Players</span>
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-trophy"></i>
+                                        <span>$50K Rewards</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="game-overlay">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-play"></i>
+                                    Start
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="game-card" data-game-type="1v1">
+                        <div class="game-card-inner">
+                            <div class="game-icon">
+                                <i class="fas fa-sword"></i>
+                            </div>
+                            <div class="game-content">
+                                <h3 class="game-title">1v1</h3>
+                                <p class="game-description">Head-to-head competitive battles</p>
+                                <div class="game-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>8.2K Players</span>
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-trophy"></i>
+                                        <span>$120K Rewards</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="game-overlay">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-play"></i>
+                                    Start
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="game-card" data-game-type="single-player">
+                        <div class="game-card-inner">
+                            <div class="game-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="game-content">
+                                <h3 class="game-title">Single Player</h3>
+                                <p class="game-description">Solo challenges and achievements</p>
+                                <div class="game-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>15.7K Players</span>
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-trophy"></i>
+                                        <span>$85K Rewards</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="game-overlay">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-play"></i>
+                                    Start
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="game-card" data-game-type="multiplayer">
+                        <div class="game-card-inner">
+                            <div class="game-icon">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                            <div class="game-content">
+                                <h3 class="game-title">Multiplayer</h3>
+                                <p class="game-description">Team-based strategic gameplay</p>
+                                <div class="game-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>12.3K Players</span>
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-trophy"></i>
+                                        <span>$85K Rewards</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="game-overlay">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-play"></i>
+                                    Start
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="game-card" data-game-type="streaming">
+                        <div class="game-card-inner">
+                            <div class="game-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div class="game-content">
+                                <h3 class="game-title">Streaming</h3>
+                                <p class="game-description">Live streaming competitions</p>
+                                <div class="game-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>6.8K Players</span>
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-trophy"></i>
+                                        <span>$75K Rewards</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="game-overlay">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-play"></i>
+                                    Start
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="game-card" data-game-type="live">
+                        <div class="game-card-inner">
+                            <div class="game-icon">
+                                <i class="fas fa-broadcast-tower"></i>
+                            </div>
+                            <div class="game-content">
+                                <h3 class="game-title">Live</h3>
+                                <p class="game-description">Real-time tournament action</p>
+                                <div class="game-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>9.1K Players</span>
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-trophy"></i>
+                                        <span>$150K Rewards</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="game-overlay">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-play"></i>
+                                    Start
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- About Section -->
         <section class="about" id="about">
             <div class="container">
                 <div class="about-content">
                     <div class="about-text">
                         <div class="section-header">
-                            <h2 class="section-title">About Kill-Zone Game⋅Bet</h2>
+                            <h2 class="section-title">About Kill Zone</h2>
                             <p class="section-subtitle">Revolutionizing competitive gaming through secure betting</p>
                         </div>
                         
                         <div class="about-description">
                             <p class="about-paragraph">
-                               Kill-Zone Game⋅Bet is the ultimate platform where gaming skills meet real rewards. We've created a secure, transparent ecosystem that allows gamers to monetize their passion while competing with players worldwide.
+                               Kill Zone is the ultimate platform where gaming skills meet real rewards. We've created a secure, transparent ecosystem that allows gamers to monetize their passion while competing with players worldwide.
                             </p>
                             <p class="about-paragraph">
                                 Founded by passionate gamers who understood the need for a trustworthy platform, Killer Game Bet bridges the gap between casual gaming and competitive esports. Our mission is to provide every gamer with the opportunity to turn their skills into earnings.
@@ -211,8 +459,8 @@
                             <i class="fas fa-users"></i>
                         </div>
                         <div class="step-content">
-                            <h3 class="step-title">Meet Players</h3>
-                            <p class="step-description">Create or join matchrooms, invite players, and agree on terms for your upcoming match.</p>
+                            <h3 class="step-title">Register Kill Zone Account</h3>
+                            <p class="step-description">play 1 v 1 or invite players, and agree on terms for your upcoming match.</p>
                         </div>
                         <div class="step-number">01</div>
                     </div>
@@ -273,7 +521,7 @@
         <section class="features" id="features">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Why Choose Kill-Zone Game⋅Bet</h2>
+                    <h2 class="section-title">Why Choose Kill Zone</h2>
                     <p class="section-subtitle">Built for gamers, by gamers</p>
                 </div>
 
@@ -332,18 +580,17 @@
         <!-- Call to Action Section -->
         <section class="cta">
             <div class="cta-background">
-              
                 <div class="cta-overlay"></div>
             </div>
             
             <div class="container">
                 <div class="cta-content">
-                    <h2 class="cta-title">Stop Talking — Start Winning!</h2>
-                    <p class="cta-subtitle">Join thousands of gamers already earning on Kill-Zone Game⋅Bet</p>
+                    <h2 class="cta-title">Play Any where, Get Paid Instantly!</h2>
+                    <p class="cta-subtitle">Join thousands of gamers already earning on Kill Zone</p>
                     <div class="cta-buttons">
                         <button class="btn btn-primary btn-large glow-animation">
                             <i class="fas fa-crown"></i>
-                            Join Kill-Zone Game⋅Bet Now
+                            Join Kill Zone Now
                         </button>
                         <button class="btn btn-outline btn-large">
                             <i class="fas fa-info-circle"></i>
@@ -378,7 +625,7 @@
                 <!-- Logo and Description -->
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <img src="assets/logo.svg" alt="Kill-Zone Game⋅Bet" class="logo-img">
+                        <a href="#home"> <img src="assets/logo.svg" alt="Kill-Zone Game⋅Bet" class="logo-img"></a>
                         <span class="footer-logo-text">Kill-Zone Game⋅Bet</span>
                     </div>
                     <p class="footer-description">
@@ -405,6 +652,7 @@
                     <h3 class="footer-title">Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
+                        <li><a href="#games">Games</a></li>
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#" id="terms-link">Terms & Conditions</a></li>
                         <li><a href="#" id="privacy-link">Privacy Policy</a></li>
@@ -500,7 +748,7 @@
                     </button>
                 </div>
                 <p class="auth-switch">
-                    Don't have an account? <a href="#" id="switch-to-signup">Sign up</a>
+                    Don't have an account? <a href="#" id="switch-to-signup">Register</a>
                 </p>
             </div>
         </div>
@@ -510,7 +758,7 @@
     <div class="modal-overlay" id="signup-modal-overlay">
         <div class="modal" id="signup-modal">
             <div class="modal-header">
-                <h2 class="modal-title">Join Killer Game Bet</h2>
+                <h2 class="modal-title">Join Kill Zone</h2>
                 <button class="modal-close" id="signup-modal-close">
                     <i class="fas fa-times"></i>
                 </button>
@@ -584,31 +832,31 @@
             <div class="modal-body gallery-modal-body">
                 <div class="terms-content">
                     <h3>1. Acceptance of Terms</h3>
-                    <p>By accessing and using Kill-Zone Game⋅Bet, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                    <p>By accessing and using Kill Zone, you accept and agree to be bound by the terms and provision of this agreement.</p>
                     
                     <h3>2. Gaming and Betting Rules</h3>
-                    <p>All users must be 18 years or older to participate in betting activities. Kill-Zone Game⋅Bet promotes responsible gaming and provides tools to help users manage their gaming activities.</p>
+                    <p>All users must be 18 years or older to participate in betting activities. Kill Zone promotes responsible gaming and provides tools to help users manage their gaming activities.</p>
                     
                     <h3>3. Account Security</h3>
                     <p>Users are responsible for maintaining the confidentiality of their account information and password. Any activities that occur under your account are your responsibility.</p>
                     
                     <h3>4. Fair Play Policy</h3>
-                    <p>Kill-Zone Game⋅Bet maintains a zero-tolerance policy for cheating, fraud, or any form of unfair play. Violations will result in immediate account suspension and forfeiture of funds.</p>
+                    <p>Kill Zone maintains a zero-tolerance policy for cheating, fraud, or any form of unfair play. Violations will result in immediate account suspension and forfeiture of funds.</p>
                     
                     <h3>5. Payment and Withdrawals</h3>
                     <p>All transactions are processed through our secure payment partners. Withdrawal requests are processed within 24-48 hours during business days.</p>
                     
                     <h3>6. Dispute Resolution</h3>
-                    <p>In case of disputes, Kill-Zone Game⋅Bet provides a fair and transparent resolution process with both automated systems and human oversight.</p>
+                    <p>In case of disputes, Kill Zone provides a fair and transparent resolution process with both automated systems and human oversight.</p>
                     
                     <h3>7. Privacy and Data Protection</h3>
                     <p>We are committed to protecting your privacy and personal information in accordance with our Privacy Policy and applicable data protection laws.</p>
                     
                     <h3>8. Limitation of Liability</h3>
-                    <p>Kill-Zone Game⋅Bet shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of the service.</p>
+                    <p>Kill Zone shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of the service.</p>
                     
                     <h3>9. Changes to Terms</h3>
-                    <p>Kill-Zone Game⋅Bet reserves the right to modify these terms at any time. Users will be notified of significant changes via email or platform notifications.</p>
+                    <p>Kill Zone reserves the right to modify these terms at any time. Users will be notified of significant changes via email or platform notifications.</p>
                     
                     <h3>10. Contact Information</h3>
                     <p>For questions about these terms, please contact our support team through the platform or email support@killzonegamebet.com.</p>
