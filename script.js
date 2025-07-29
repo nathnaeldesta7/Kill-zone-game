@@ -15,6 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeAboutSection()
     initializeGalleryModals()
     initializePasswordToggle()
+    initializeSidebar()
+    initializeThemeToggle()
+    initializeSearch()
+    initializeGamesSection()
   } catch (error) {
     console.error("Initialization error:", error)
   }
@@ -25,29 +29,442 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 1500)
 })
 
-// Function to scroll to home section
-function scrollToHome() {
+// Sample game data for gallery - images only
+const gameGalleryData = {
+  virtual: [
+    { name: "Aviator", image: "games/g1.jpg" },
+    { name: "Football", image: "games/g2.jpg" },
+    { name: "Car Race", image: "games/g3.jpg" },
+    { name: "Keno", image: "games/g4.jpg" },
+    { name: "puzzle", image: "games/g5.jpg" },
+    { name: "penality Shoot", image: "games/g6.jpg" },
+    { name: "Pub G", image: "games/g7.jpg" },
+    { name: "Critical", image: "games/g8.jpg" },
+    { name: "Es Sport", image: "games/g9.jpg" },
+    { name: "Casino", image: "games/g10.jpg" },
+    { name: "Fitnes", image: "games/g11.jpg" },
+    { name: "Gold Miner", image: "games/g12.jpg" },
+  ],
+  "1v1": [
+    { name: "Aviator", image: "games/g1.jpg" },
+    { name: "Football", image: "games/g2.jpg" },
+    { name: "Car Race", image: "games/g3.jpg" },
+    { name: "Keno", image: "games/g4.jpg" },
+    { name: "puzzle", image: "games/g5.jpg" },
+    { name: "penality Shoot", image: "games/g6.jpg" },
+    { name: "Pub G", image: "games/g7.jpg" },
+    { name: "Critical", image: "games/g8.jpg" },
+    { name: "Es Sport", image: "games/g9.jpg" },
+    { name: "Casino", image: "games/g10.jpg" },
+    { name: "Fitnes", image: "games/g11.jpg" },
+    { name: "Gold Miner", image: "games/g12.jpg" },
+  ],
+  "single-player": [
+    { name: "Aviator", image: "games/g1.jpg" },
+    { name: "Football", image: "games/g2.jpg" },
+    { name: "Car Race", image: "games/g3.jpg" },
+    { name: "Keno", image: "games/g4.jpg" },
+    { name: "puzzle", image: "games/g5.jpg" },
+    { name: "penality Shoot", image: "games/g6.jpg" },
+    { name: "Pub G", image: "games/g7.jpg" },
+    { name: "Critical", image: "games/g8.jpg" },
+    { name: "Es Sport", image: "games/g9.jpg" },
+    { name: "Casino", image: "games/g10.jpg" },
+    { name: "Fitnes", image: "games/g11.jpg" },
+    { name: "Gold Miner", image: "games/g12.jpg" },
+  ],
+  multiplayer: [
+    { name: "Aviator", image: "games/g1.jpg" },
+    { name: "Football", image: "games/g2.jpg" },
+    { name: "Car Race", image: "games/g3.jpg" },
+    { name: "Keno", image: "games/g4.jpg" },
+    { name: "puzzle", image: "games/g5.jpg" },
+    { name: "penality Shoot", image: "games/g6.jpg" },
+    { name: "Pub G", image: "games/g7.jpg" },
+    { name: "Critical", image: "games/g8.jpg" },
+    { name: "Es Sport", image: "games/g9.jpg" },
+    { name: "Casino", image: "games/g10.jpg" },
+    { name: "Fitnes", image: "games/g11.jpg" },
+    { name: "Gold Miner", image: "games/g12.jpg" },
+  ],
+  streaming: [
+    { name: "Aviator", image: "games/g1.jpg" },
+    { name: "Football", image: "games/g2.jpg" },
+    { name: "Car Race", image: "games/g3.jpg" },
+    { name: "Keno", image: "games/g4.jpg" },
+    { name: "puzzle", image: "games/g5.jpg" },
+    { name: "penality Shoot", image: "games/g6.jpg" },
+    { name: "Pub G", image: "games/g7.jpg" },
+    { name: "Critical", image: "games/g8.jpg" },
+    { name: "Es Sport", image: "games/g9.jpg" },
+    { name: "Casino", image: "games/g10.jpg" },
+    { name: "Fitnes", image: "games/g11.jpg" },
+    { name: "Gold Miner", image: "games/g12.jpg" },
+  ],
+  live: [
+    { name: "Aviator", image: "games/g1.jpg" },
+    { name: "Football", image: "games/g2.jpg" },
+    { name: "Car Race", image: "games/g3.jpg" },
+    { name: "Keno", image: "games/g4.jpg" },
+    { name: "puzzle", image: "games/g5.jpg" },
+    { name: "penality Shoot", image: "games/g6.jpg" },
+    { name: "Pub G", image: "games/g7.jpg" },
+    { name: "Critical", image: "games/g8.jpg" },
+    { name: "Es Sport", image: "games/g9.jpg" },
+    { name: "Casino", image: "games/g10.jpg" },
+    { name: "Fitnes", image: "games/g11.jpg" },
+    { name: "Gold Miner", image: "games/g12.jpg" },
+  ],
+}
+
+// Games Section Functionality
+function initializeGamesSection() {
   try {
-    const homeSection = document.getElementById("home")
-    const header = document.getElementById("header")
+    const gameCards = document.querySelectorAll(".game-card")
 
-    if (homeSection && header) {
-      const headerHeight = header.offsetHeight
-      const targetPosition = homeSection.offsetTop - headerHeight
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
+    gameCards.forEach((card, index) => {
+      // Add hover effects
+      card.addEventListener("mouseenter", () => {
+        card.style.transform = "translateY(-10px) scale(1.02)"
       })
 
-      // Update active nav link
-      const homeLink = document.querySelector('.nav-link[href="#home"]')
-      if (homeLink) {
-        updateActiveNavLink(homeLink)
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "translateY(0) scale(1)"
+      })
+
+      // Add click handlers for game cards
+      const playButton = card.querySelector(".btn")
+      if (playButton) {
+        playButton.addEventListener("click", (e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          const gameType = card.getAttribute("data-game-type")
+          openGameGallery(gameType)
+        })
       }
+
+      // Add click handler to entire card
+      card.addEventListener("click", (e) => {
+        if (!e.target.closest(".btn")) {
+          const gameType = card.getAttribute("data-game-type")
+          openGameGallery(gameType)
+        }
+      })
+    })
+
+    // Initialize games section animations
+    initializeGamesAnimations()
+  } catch (error) {
+    console.error("Error initializing games section:", error)
+  }
+}
+
+function openGameGallery(gameType) {
+  try {
+    const gameNames = {
+      virtual: "Virtual Reality Games",
+      "1v1": "1v1 Competitive Matches",
+      "single-player": "Single Player Challenges",
+      multiplayer: "Multiplayer Tournaments",
+      streaming: "Live Streaming Competitions",
+      live: "Live Tournament Action",
+    }
+
+    const gameName = gameNames[gameType] || "Game"
+    const games = gameGalleryData[gameType] || []
+
+    // Create gallery modal
+    createGameGalleryModal(gameName, games)
+
+    // Track game selection
+    trackEvent("game_gallery_opened", {
+      game_type: gameType,
+      game_name: gameName,
+    })
+  } catch (error) {
+    console.error("Error opening game gallery:", error)
+  }
+}
+
+function createGameGalleryModal(title, games) {
+  // Remove existing gallery modal if any
+  const existingModal = document.getElementById("game-gallery-modal")
+  if (existingModal) {
+    existingModal.remove()
+  }
+
+  // Store current scroll position to restore later
+  const scrollY = window.scrollY
+
+  // Create modal HTML
+  const modalHTML = `
+    <div class="modal-overlay game-gallery-modal" id="game-gallery-modal">
+      <div class="modal game-gallery-content">
+        <div class="modal-header">
+          <h2 class="modal-title">${title}</h2>
+          <button class="modal-close" id="game-gallery-close">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body game-gallery-body">
+          <div class="game-gallery-grid">
+            ${games
+              .map(
+                (game, index) => `
+              <div class="gallery-game-item" data-index="${index}">
+                <img src="${game.image}" alt="${game.name}" class="gallery-game-image">
+                <div class="gallery-game-overlay">
+                  <h4 class="gallery-game-title">${game.name}</h4>
+                  <button class="btn btn-primary btn-small">
+                    <i class="fas fa-play"></i>
+                    Play
+                  </button>
+                </div>
+              </div>
+            `,
+              )
+              .join("")}
+          </div>
+        </div>
+      </div>
+    </div>
+  `
+
+  // Add modal to page
+  document.body.insertAdjacentHTML("beforeend", modalHTML)
+
+  // Get modal elements
+  const modal = document.getElementById("game-gallery-modal")
+  const closeBtn = document.getElementById("game-gallery-close")
+
+  if (!modal || !closeBtn) {
+    console.error("Modal elements not found")
+    return
+  }
+
+  // Lock body scroll and maintain scroll position
+  document.body.classList.add("modal-open")
+  document.body.style.top = `-${scrollY}px`
+
+  // Show modal with a slight delay to ensure DOM is ready
+  requestAnimationFrame(() => {
+    modal.classList.add("show")
+  })
+
+  // Close modal handlers
+  closeBtn.addEventListener("click", (e) => {
+    e.preventDefault()
+    closeGameGallery(scrollY)
+  })
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closeGameGallery(scrollY)
+    }
+  })
+
+  // Game item click handlers
+  const gameItems = modal.querySelectorAll(".gallery-game-item")
+  gameItems.forEach((item, index) => {
+    if (!item) return
+
+    item.addEventListener("click", (e) => {
+      if (!e.target.closest(".btn")) {
+        // showNotification(`${games[index].name} - Coming Soon!`, "info") // DISABLED
+      }
+    })
+
+    const playBtn = item.querySelector(".btn")
+    if (playBtn) {
+      playBtn.addEventListener("click", (e) => {
+        e.stopPropagation()
+        // showNotification(`Starting ${games[index].name}...`, "info") // DISABLED
+      })
+    }
+  })
+
+  // Animate gallery items
+  setTimeout(() => {
+    gameItems.forEach((item, index) => {
+      if (item) {
+        setTimeout(() => {
+          item.style.opacity = "1"
+          item.style.transform = "translateY(0)"
+        }, index * 50)
+      }
+    })
+  }, 100)
+
+  // Close with Escape key
+  const escapeHandler = (e) => {
+    if (e.key === "Escape") {
+      closeGameGallery(scrollY)
+      document.removeEventListener("keydown", escapeHandler)
+    }
+  }
+  document.addEventListener("keydown", escapeHandler)
+}
+
+function closeGameGallery(scrollY = 0) {
+  const modal = document.getElementById("game-gallery-modal")
+  if (modal) {
+    modal.classList.remove("show")
+
+    // Restore body scroll
+    document.body.classList.remove("modal-open")
+    document.body.style.top = ""
+
+    // Restore scroll position
+    window.scrollTo(0, scrollY)
+
+    setTimeout(() => {
+      if (modal.parentNode) {
+        modal.remove()
+      }
+    }, 300)
+  }
+}
+
+// Theme Toggle Functionality
+function initializeThemeToggle() {
+  try {
+    const themeToggle = document.getElementById("theme-checkbox")
+    const body = document.body
+
+    // Check for saved theme preference or default to dark
+    const savedTheme = localStorage.getItem("theme") || "dark"
+
+    // Apply saved theme
+    if (savedTheme === "light") {
+      body.classList.remove("dark-theme")
+      body.classList.add("light-theme")
+      if (themeToggle) themeToggle.checked = true
+    } else {
+      body.classList.remove("light-theme")
+      body.classList.add("dark-theme")
+      if (themeToggle) themeToggle.checked = false
+    }
+
+    // Theme toggle event listener
+    if (themeToggle) {
+      themeToggle.addEventListener("change", function () {
+        try {
+          if (this.checked) {
+            // Switch to light theme
+            body.classList.remove("dark-theme")
+            body.classList.add("light-theme")
+            localStorage.setItem("theme", "light")
+            showNotification("Switched to Light Mode", "info")
+          } else {
+            // Switch to dark theme
+            body.classList.remove("light-theme")
+            body.classList.add("dark-theme")
+            localStorage.setItem("theme", "dark")
+            showNotification("Switched to Dark Mode", "info")
+          }
+        } catch (error) {
+          console.error("Theme toggle error:", error)
+        }
+      })
     }
   } catch (error) {
-    console.error("Error in scrollToHome:", error)
+    console.error("Error initializing theme toggle:", error)
+  }
+}
+
+// Search Functionality
+function initializeSearch() {
+  try {
+    const searchInput = document.getElementById("search-input")
+    const searchBtn = document.getElementById("search-btn")
+
+    if (searchBtn) {
+      searchBtn.addEventListener("click", handleSearch)
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          handleSearch()
+        }
+      })
+
+      // Add search suggestions (placeholder functionality)
+      searchInput.addEventListener("input", function () {
+        const query = this.value.trim()
+        if (query.length > 2) {
+          // In a real app, you would fetch search suggestions here
+          console.log("Search query:", query)
+        }
+      })
+    }
+  } catch (error) {
+    console.error("Error initializing search:", error)
+  }
+}
+
+function handleSearch() {
+  try {
+    const searchInput = document.getElementById("search-input")
+    if (!searchInput) return
+
+    const query = searchInput.value.trim()
+
+    if (query) {
+      // In a real application, you would perform the actual search here
+      showNotification(`Searching for: "${query}"`, "info")
+
+      // Simulate search results
+      setTimeout(() => {
+        // showNotification("Search feature coming soon!", "info") // DISABLED
+      }, 1000)
+    } else {
+      showNotification("Please enter a search term", "warning")
+    }
+  } catch (error) {
+    console.error("Search error:", error)
+    showNotification("Search error occurred", "error")
+  }
+}
+
+// Sidebar Functionality
+function initializeSidebar() {
+  try {
+    const sidebarItems = document.querySelectorAll(".sidebar-item")
+
+    sidebarItems.forEach((item, index) => {
+      item.addEventListener("click", () => {
+        handleSidebarItemClick(index)
+      })
+    })
+  } catch (error) {
+    console.error("Error initializing sidebar:", error)
+  }
+}
+
+function handleSidebarItemClick(index) {
+  try {
+    const actions = [
+      () => {
+        // Games section - scroll to games
+        const gamesSection = document.getElementById("games")
+        if (gamesSection) {
+          gamesSection.scrollIntoView({ behavior: "smooth" })
+          // showNotification("Welcome to our Games section!", "info") // DISABLED
+        }
+      },
+      () => {}, // Live feature - DISABLED notification
+      () => {}, // Promotions page - DISABLED notification  
+      () => {}, // Help center - DISABLED notification
+      () => {}, // Work with us page - DISABLED notification
+      () => {}, // Chat feature - DISABLED notification
+    ]
+
+    if (actions[index]) {
+      actions[index]()
+    }
+  } catch (error) {
+    console.error("Error handling sidebar item click:", error)
   }
 }
 
@@ -178,7 +595,33 @@ function hideLoadingScreen() {
   }
 }
 
-// Header Functionality
+// Function to scroll to home section - RESTORE ORIGINAL FUNCTIONALITY
+function scrollToHome() {
+  try {
+    const homeSection = document.getElementById("home")
+    const header = document.getElementById("header")
+
+    if (homeSection && header) {
+      const headerHeight = header.offsetHeight
+      const targetPosition = homeSection.offsetTop - headerHeight
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      })
+
+      // Update active nav link
+      const homeLink = document.querySelector('.nav-link[href="#home"]')
+      if (homeLink) {
+        updateActiveNavLink(homeLink)
+      }
+    }
+  } catch (error) {
+    console.error("Error in scrollToHome:", error)
+  }
+}
+
+// Header Functionality - RESTORE ORIGINAL LOGO CLICK
 function initializeHeader() {
   try {
     const header = document.getElementById("header")
@@ -200,6 +643,24 @@ function initializeHeader() {
     }, 16)
 
     window.addEventListener("scroll", scrollHandler, { passive: true })
+
+    // RESTORE: Logo click functionality
+    const logoImg = document.querySelector(".logo-img")
+    const logoText = document.querySelector(".logo-text")
+
+    if (logoImg) {
+      logoImg.addEventListener("click", (e) => {
+        e.preventDefault()
+        scrollToHome()
+      })
+    }
+
+    if (logoText) {
+      logoText.addEventListener("click", (e) => {
+        e.preventDefault()
+        scrollToHome()
+      })
+    }
   } catch (error) {
     console.error("Error initializing header:", error)
   }
@@ -408,6 +869,8 @@ function initializeAuth() {
     const userProfile = document.getElementById("user-profile")
     const profileAvatar = document.getElementById("profile-avatar")
     const profileDropdown = document.getElementById("profile-dropdown")
+    const depositBtn = document.getElementById("deposit-btn")
+    const withdrawBtn = document.getElementById("withdraw-btn")
 
     // Check if user is logged in (simulate with localStorage)
     let isLoggedIn = false
@@ -438,6 +901,18 @@ function initializeAuth() {
       logoutBtn.addEventListener("click", (e) => {
         e.preventDefault()
         logout()
+      })
+    }
+
+    // Deposit functionality
+    if (depositBtn) {
+      depositBtn.addEventListener("click", (e) => {
+        e.preventDefault()
+        // showNotification("Deposit feature coming soon!", "info") // DISABLED
+        // Close dropdown
+        if (profileDropdown) {
+          profileDropdown.classList.remove("show")
+        }
       })
     }
 
@@ -478,13 +953,9 @@ function updateAuthState(isLoggedIn) {
 
 function login(userData = null) {
   try {
-    try {
-      localStorage.setItem("isLoggedIn", "true")
-      if (userData) {
-        localStorage.setItem("userData", JSON.stringify(userData))
-      }
-    } catch (e) {
-      console.warn("localStorage not available:", e)
+    localStorage.setItem("isLoggedIn", "true")
+    if (userData) {
+      localStorage.setItem("userData", JSON.stringify(userData))
     }
 
     updateAuthState(true)
@@ -497,12 +968,8 @@ function login(userData = null) {
 
 function logout() {
   try {
-    try {
-      localStorage.removeItem("isLoggedIn")
-      localStorage.removeItem("userData")
-    } catch (e) {
-      console.warn("localStorage not available:", e)
-    }
+    localStorage.removeItem("isLoggedIn")
+    localStorage.removeItem("userData")
 
     updateAuthState(false)
     const profileDropdown = document.getElementById("profile-dropdown")
@@ -593,7 +1060,7 @@ function showModal(modalId) {
     const modal = document.getElementById(modalId)
     if (modal) {
       modal.classList.add("show")
-      document.body.style.overflow = "hidden"
+      document.body.classList.add("modal-open")
 
       // Focus first input
       const firstInput = modal.querySelector('input[type="text"], input[type="email"]')
@@ -611,7 +1078,7 @@ function hideModal(modalId) {
     const modal = document.getElementById(modalId)
     if (modal) {
       modal.classList.remove("show")
-      document.body.style.overflow = "auto"
+      document.body.classList.remove("modal-open")
     }
   } catch (error) {
     console.error("Error hiding modal:", error)
@@ -624,7 +1091,7 @@ function hideAllModals() {
     modals.forEach((modal) => {
       modal.classList.remove("show")
     })
-    document.body.style.overflow = "auto"
+    document.body.classList.remove("modal-open")
   } catch (error) {
     console.error("Error hiding all modals:", error)
   }
@@ -846,6 +1313,25 @@ function addAnimationStyles() {
             transform: translateY(0);
             opacity: 1;
         }
+        
+        .dynamic-game-card {
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .back-to-genres {
+            animation: fadeInUp 0.5s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     `
     document.head.appendChild(style)
   } catch (error) {
@@ -909,20 +1395,6 @@ function initializeStatsCounter() {
       return
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          hasAnimated = true
-          animateCounters()
-        }
-      })
-    })
-
-    const statsSection = document.querySelector(".stats-counter")
-    if (statsSection) {
-      observer.observe(statsSection)
-    }
-
     function animateCounters() {
       try {
         statNumbers.forEach((stat) => {
@@ -960,6 +1432,20 @@ function initializeStatsCounter() {
       } catch (error) {
         console.error("Counter animation error:", error)
       }
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          hasAnimated = true
+          animateCounters()
+        }
+      })
+    }, {})
+
+    const statsSection = document.querySelector(".stats-counter")
+    if (statsSection) {
+      observer.observe(statsSection)
     }
 
     function formatNumber(num) {
@@ -1107,6 +1593,10 @@ function addNotificationStyles() {
             transition: all 0.3s ease;
         }
         
+        .light-theme .notification {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
         .notification.show {
             transform: translateX(0);
             opacity: 1;
@@ -1208,7 +1698,6 @@ function throttle(func, limit) {
   let inThrottle
   return function () {
     const args = arguments
-    
 
     if (!inThrottle) {
       func.apply(this, args)
@@ -1221,45 +1710,17 @@ function throttle(func, limit) {
 // Error Handling
 window.addEventListener("error", (e) => {
   console.error("JavaScript Error:", e.error)
-  // In production, you might want to send this to an error tracking service
+  // In production, you might want to send this error to a logging service
 })
 
-// Unhandled promise rejection handling
-window.addEventListener("unhandledrejection", (e) => {
-  console.error("Unhandled Promise Rejection:", e.reason)
-  e.preventDefault() // Prevent the default browser behavior
-})
-
-// Analytics and Tracking (placeholder)
-function trackEvent(eventName, eventData = {}) {
-  try {
-    // In a real application, you would send this to your analytics service
-    console.log("Event tracked:", eventName, eventData)
-  } catch (error) {
-    console.error("Tracking error:", error)
-  }
+// Placeholder for trackEvent function
+function trackEvent(eventName, eventData) {
+  console.log(`Event Tracked: ${eventName}`, eventData)
+  // In a real application, you would send this data to an analytics service
 }
 
-// Track page load
-try {
-  trackEvent("page_view", {
-    page: window.location.pathname,
-    timestamp: new Date().toISOString(),
-  })
-} catch (error) {
-  console.error("Page view tracking error:", error)
+// Placeholder for initializeGamesAnimations function
+function initializeGamesAnimations() {
+  console.log("Initializing games animations...")
+  // Add your games section animations logic here
 }
-
-// Track button clicks
-document.addEventListener("click", (e) => {
-  try {
-    if (e.target && (e.target.matches(".btn") || e.target.matches("button"))) {
-      trackEvent("button_click", {
-        button_text: e.target.textContent ? e.target.textContent.trim() : "",
-        button_class: e.target.className || "",
-      })
-    }
-  } catch (error) {
-    console.error("Button click tracking error:", error)
-  }
-})
