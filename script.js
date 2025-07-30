@@ -87,34 +87,6 @@ const gameGalleryData = {
     { name: "Fitnes", image: "games/g11.jpg" },
     { name: "Gold Miner", image: "games/g12.jpg" },
   ],
-  streaming: [
-    { name: "Aviator", image: "games/g1.jpg" },
-    { name: "Football", image: "games/g2.jpg" },
-    { name: "Car Race", image: "games/g3.jpg" },
-    { name: "Keno", image: "games/g4.jpg" },
-    { name: "puzzle", image: "games/g5.jpg" },
-    { name: "penality Shoot", image: "games/g6.jpg" },
-    { name: "Pub G", image: "games/g7.jpg" },
-    { name: "Critical", image: "games/g8.jpg" },
-    { name: "Es Sport", image: "games/g9.jpg" },
-    { name: "Casino", image: "games/g10.jpg" },
-    { name: "Fitnes", image: "games/g11.jpg" },
-    { name: "Gold Miner", image: "games/g12.jpg" },
-  ],
-  live: [
-    { name: "Aviator", image: "games/g1.jpg" },
-    { name: "Football", image: "games/g2.jpg" },
-    { name: "Car Race", image: "games/g3.jpg" },
-    { name: "Keno", image: "games/g4.jpg" },
-    { name: "puzzle", image: "games/g5.jpg" },
-    { name: "penality Shoot", image: "games/g6.jpg" },
-    { name: "Pub G", image: "games/g7.jpg" },
-    { name: "Critical", image: "games/g8.jpg" },
-    { name: "Es Sport", image: "games/g9.jpg" },
-    { name: "Casino", image: "games/g10.jpg" },
-    { name: "Fitnes", image: "games/g11.jpg" },
-    { name: "Gold Miner", image: "games/g12.jpg" },
-  ],
 }
 
 // Games Section Functionality
@@ -166,8 +138,8 @@ function openGameGallery(gameType) {
       "1v1": "1v1 Competitive Matches",
       "single-player": "Single Player Challenges",
       multiplayer: "Multiplayer Tournaments",
-      streaming: "Live Streaming Competitions",
-      live: "Live Tournament Action",
+      streaming: "Streaming",
+      live: "Live",
     }
 
     const gameName = gameNames[gameType] || "Game"
