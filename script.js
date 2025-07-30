@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Sample game data for gallery - images only
 const gameGalleryData = {
-  virtual: [
+  multiplayer: [
     { name: "Aviator", image: "games/g1.jpg" },
     { name: "Football", image: "games/g2.jpg" },
     { name: "Car Race", image: "games/g3.jpg" },
@@ -73,7 +73,7 @@ const gameGalleryData = {
     { name: "Fitnes", image: "games/g11.jpg" },
     { name: "Gold Miner", image: "games/g12.jpg" },
   ],
-  multiplayer: [
+  virtual: [
     { name: "Aviator", image: "games/g1.jpg" },
     { name: "Football", image: "games/g2.jpg" },
     { name: "Car Race", image: "games/g3.jpg" },
